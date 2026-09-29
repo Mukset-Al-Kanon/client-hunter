@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Hunter · Omnichannel Lead & Outreach Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css?v=3.0">
+</head>
+<body>
+
+  <div class="app-canvas">
+    
+    <!-- Top Header -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <div class="brand-badge">CH</div>
+        <div class="brand-text">
+          <h2>Client Hunter</h2>
+          <span>Omnichannel Lead & Outreach Engine</span>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <button class="soft-pill-btn master-db-nav-btn" id="openMasterSheetBtn" title="Open Full-Screen Master Database (Excel / Google Sheets)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+          <span>Master Database</span>
+        </button>
+
+        <button class="soft-pill-btn verify-all-btn" id="verifyAllLeadsBtn" title="Run 100% Deep Accuracy & MX Deliverability Check on All Leads">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>🛡️ 100% Verify All</span>
+        </button>
+
+        <button class="soft-pill-btn" id="openSettingsBtn" title="Configure AI Model & Automated Email Sending">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>⚙️ AI & Outreach Setup</span>
+        </button>
+
+        <button class="soft-pill-btn" id="exportCsvBtn" title="Export All Leads to CSV">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export CSV</span>
+        </button>
+
+        <div class="profile-card">
+          <div class="avatar-ring">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="avatar-img">
+          </div>
+          <div class="profile-info">
+            <span class="user-name">Kanon</span>
+            <span class="user-role">Growth Partner</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search & Hunt Action Card with Smart Auto-Pilot -->
+    <section class="hunt-control-card">
+      <div class="hunt-mode-header">
+        <div class="hunt-mode-pills">
+          <button class="mode-pill active" id="modeAutopilotBtn">
+            <span class="pulsing-radar-dot"></span>
+            <span>⚡ Auto-Pilot Engine (Hands-Free)</span>
+          </button>
+          <button class="mode-pill" id="modeManualBtn">
+            <span>🎯 Custom Manual Search</span>
+          </button>
+        </div>
+
+        <div class="queue-status-badge" id="queueStatusBadge">
+          <span class="badge-icon">🔄</span>
+          <span id="queueInfoText">Queue: 12 High-Ticket Niches · 15 Tier-1 Wealth Cities</span>
+        </div>
+      </div>
+
+      <!-- View 1: Auto-Pilot Active Target View -->
+      <div class="autopilot-view active" id="autopilotView">
+        <div class="autopilot-preview-banner">
+          <div class="target-meta-left">
+            <span class="target-super-tag">AUTONOMOUS ROTATION · CURRENT TARGET</span>
+            <div class="target-main-tags">
+              <span class="target-pill niche" id="targetNicheLabel">Roofing Contractors</span>
+              <span class="target-badge-sub" id="targetNicheTag">Ticket: $10k-$30k</span>
+              <span class="target-separator">in</span>
+              <span class="target-pill city" id="targetCityLabel">Dallas, TX</span>
+              <span class="target-badge-sub" id="targetCityMarket">Sunbelt Hub</span>
+              <span class="target-bd-time-tag" id="targetCityBdTimePill" title="Optimal Contact Window relative to Bangladesh Standard Time (BST)">🇧🇩 Best Contact: 8:00 PM – 12:00 AM BST</span>
+            </div>
+            <div class="target-urgency-note">
+              <span class="fire-icon">🔥</span>
+              <span id="targetUrgencyText">Urgency Hook: Storm Season & Leaks · Zero Manual Input Required</span>
+            </div>
+          </div>
+
+          <div class="target-meta-right">
+            <div class="up-next-box">
+              <span class="up-next-label">UP NEXT IN ROTATION:</span>
+              <span class="up-next-val" id="targetNextLabel">Solar Energy Installers in Austin, TX</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="autopilot-actions-bar">
+          <div class="batch-selector-group">
+            <label for="autopilotLimit">Batch Size:</label>
+            <select id="autopilotLimit">
+              <option value="5">5 Fresh Leads</option>
+              <option value="10" selected>10 Fresh Leads</option>
+              <option value="15">15 Fresh Leads</option>
+            </select>
+          </div>
+
+          <button class="coral-action-btn pulse-glow" id="executeAutopilotBtn">
+            <span>⚡ Execute Auto-Pilot Hunt</span>
+          </button>
+
+          <div class="radar-toggle-container" title="Automatically hunt the next rotation every 60 seconds">
+            <label class="switch">
+              <input type="checkbox" id="continuousRadarToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-text" id="radarStatusText">Live Radar: Idle</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- View 2: Manual Search View (Collapsible) -->
+      <div class="manual-view" id="manualView" style="display: none;">
+        <div class="hunt-control-row">
+          <div class="input-pill-group">
+            <label for="huntNiche">Target Niche / Service</label>
+            <input type="text" id="huntNiche" value="Roofing" placeholder="e.g. Roofing, Solar, HVAC, Dental, MedSpa">
+          </div>
+
+          <div class="input-pill-group">
+            <label for="huntCity">City & State / Country</label>
+            <input type="text" id="huntCity" value="Dallas, TX" placeholder="e.g. Dallas, TX or Miami, FL or London">
+          </div>
+
+          <div class="input-pill-group narrow">
+            <label for="huntLimit">Batch Size</label>
+            <select id="huntLimit">
+              <option value="5">5 Leads</option>
+              <option value="10" selected>10 Leads</option>
+              <option value="20">20 Leads</option>
+            </select>
+          </div>
+
+          <button class="coral-action-btn" id="executeHuntBtn">
+            <span>🚀 Hunt Custom Leads</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Clean Core Metric Cards -->
+    <section class="kpi-grid">
+      <div class="card kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">TOTAL LEADS</span>
+          <span class="kpi-icon-pill">📁</span>
+        </div>
+        <div class="kpi-value" id="statTotalLeads">--</div>
+        <div class="kpi-sub">Verified local businesses</div>
+      </div>
+
+      <div class="card kpi-card highlight-hot">
+        <div class="kpi-top">
+          <span class="kpi-label">🔥 NO WEBSITE (HOT LEADS)</span>
+          <span class="kpi-badge-hot">PRIORITY</span>
+        </div>
+        <div class="kpi-value coral" id="statNoWeb">--</div>
+        <div class="kpi-sub">Direct Targets for Web Design Offer</div>
+      </div>
+
+      <div class="card kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">OUTREACH PITCHED</span>
+          <span class="kpi-icon-pill">✉️</span>
+        </div>
+        <div class="kpi-value" id="statPitched">--</div>
+        <div class="kpi-sub">Automated Emails & Social DMs</div>
+      </div>
+
+      <div class="card kpi-card">
+        <div class="kpi-top">
+          <span class="kpi-label">PIPELINE VALUE</span>
+          <span class="kpi-icon-pill">💰</span>
+        </div>
+        <div class="kpi-value" id="statPipeline">--</div>
+        <div class="kpi-sub" id="statDealsClosed">-- deals closed</div>
+      </div>
+    </section>
+
+    <!-- Main Full-Width Leads Table Section -->
+    <section class="card leads-main-card">
+      <div class="table-header-strip">
+        <div class="table-title-group">
+          <h3 class="section-title">Lead Database & Omnichannel Outreach</h3>
+          <span class="table-subtitle" id="tableLeadCount">Showing all active leads</span>
+        </div>
+
+        <div class="table-action-strip">
+          <div class="clean-search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="leadTableSearch" placeholder="Search by name, city, or niche...">
+          </div>
+
+          <div class="filter-tab-pill">
+            <button class="tab-pill active" data-filter="all">All</button>
+            <button class="tab-pill" data-filter="noweb">🔥 No Website</button>
+            <button class="tab-pill" data-filter="hasweb">✓ Has Website</button>
+          </div>
+
+          <button id="mainClearLeadsBtn" style="padding: 6px 12px; font-size: 12px; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); color: #EF4444; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-weight: 500;" title="Clear All Leads from database">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span>Clear Database</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="clean-leads-table">
+          <thead>
+            <tr>
+              <th style="min-width: 240px;">Company &amp; Niche</th>
+              <th style="min-width: 230px;">Location &amp; Best BD Time 🇧🇩</th>
+              <th style="min-width: 110px;">Reputation</th>
+              <th style="min-width: 160px;">Website Status</th>
+              <th style="min-width: 190px;">Direct Contact</th>
+              <th style="min-width: 260px;">1-Click Outreach Suite</th>
+              <th style="min-width: 150px;">Pipeline Stage</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- AI PITCH & OUTREACH MODAL -->
+  <div class="modal-backdrop" id="pitchModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-badge-group">
+          <div class="brand-badge mini">⚡</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h3 id="modalLeadName">Select a Lead</h3>
+              <span class="ai-model-tag-badge active" id="modalAiModelBadge">🤖 Gemini 3.5 Flash Lite</span>
+            </div>
+            <span id="modalLeadCategory" class="modal-sub">Business Name · City</span>
+          </div>
+        </div>
+        <button class="close-modal-btn" id="closePitchModal">✕</button>
+      </div>
+
+      <!-- BANGLADESH TIMING INTELLIGENCE BANNER -->
+      <div class="bd-timing-banner" id="modalBdTimingBanner">
+        <div class="bd-timing-main">
+          <div class="bd-timing-header">
+            <span class="bd-badge-chip">🇧🇩 BD Outreach Intelligence</span>
+            <div class="bd-client-status-pill status-prime" id="modalClientStatusPill">
+              <span class="status-pulse-dot" id="modalStatusDot"></span>
+              <span id="modalClientLocalStatus">Local: 11:24 AM · 🟢 Prime Hours</span>
+            </div>
+          </div>
+          <div class="bd-timing-grid">
+            <div class="bd-metric-col">
+              <span class="bd-metric-label">Best Contact Window (BD Time)</span>
+              <span class="bd-metric-val highlight" id="modalBdWindow">8:00 PM – 12:00 AM BST</span>
+            </div>
+            <div class="bd-metric-col">
+              <span class="bd-metric-label">Peak Response Window</span>
+              <span class="bd-metric-val" id="modalPeakBdWindow">8:30 PM – 11:30 PM BST</span>
+            </div>
+            <div class="bd-metric-col">
+              <span class="bd-metric-label">Client Timezone</span>
+              <span class="bd-metric-val" id="modalClientTz">US Central (Austin, TX)</span>
+            </div>
+          </div>
+          <div class="bd-timing-advice-bar">
+            <span class="advice-lightbulb">💡</span>
+            <span id="modalBdAdviceText">Prime outreach window! Business owner is at their desk. Emails &amp; DMs sent now receive the highest response rates.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tabEmail">📧 Cold Email & Follow-ups</button>
+        <button class="modal-tab" id="tabWa">💬 WhatsApp Direct</button>
+        <button class="modal-tab" id="tabDm">📸 Instagram / FB DM</button>
+        <button class="modal-tab" id="tabCall">📞 Cold Call Script</button>
+        <button class="modal-tab" id="tabLoom">🎥 60s Loom Blueprint</button>
+        <button class="modal-tab" id="tabAudit">🛡️ 100% Accuracy Audit</button>
+      </div>
+
+      <!-- Tab Content 1: Email + Follow-ups -->
+      <div class="tab-pane active" id="paneEmail">
+        <div class="pitch-field-group">
+          <label>Initial Cold Pitch Subject Line:</label>
+          <div class="subject-box" id="modalEmailSubject">Loading subject...</div>
+        </div>
+        <div class="pitch-field-group">
+          <label>Initial Email Body:</label>
+          <div class="body-box" id="modalEmailBody">Loading body...</div>
+        </div>
+        <div class="pitch-field-group" style="margin-top: 14px;">
+          <label>Automated Follow-up #1 (Sent +3 Days):</label>
+          <div class="body-box sub-body-box" id="modalEmailFu1">Loading follow-up 1...</div>
+        </div>
+        <div class="pitch-field-group" style="margin-top: 14px;">
+          <label>Automated Follow-up #2 / Break-up (Sent +6 Days):</label>
+          <div class="body-box sub-body-box" id="modalEmailFu2">Loading follow-up 2...</div>
+        </div>
+        <div class="action-bar-row">
+          <button class="coral-action-btn" id="sendEmailNowBtn">
+            <span>⚡ Send Email Automatically Now</span>
+          </button>
+          <button class="soft-pill-btn" id="copyEmailBtn">Copy Initial Pitch</button>
+          <button class="soft-pill-btn" id="copyFuSequenceBtn">Copy Entire Sequence</button>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: WhatsApp -->
+      <div class="tab-pane" id="paneWa">
+        <div class="pitch-field-group">
+          <label>Pre-filled WhatsApp Message (Value-First & Direct):</label>
+          <div class="body-box" id="modalWaBody">Loading WhatsApp pitch...</div>
+        </div>
+        <div class="action-bar-row">
+          <a href="#" target="_blank" class="whatsapp-action-btn" id="openWhatsAppLink">
+            <span>💬 Open Chat on WhatsApp Web</span>
+          </a>
+          <button class="soft-pill-btn" id="copyWaBtn">Copy WhatsApp Text</button>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Social DM -->
+      <div class="tab-pane" id="paneDm">
+        <div class="pitch-field-group">
+          <label>Social Direct Message (Short & Punchy for Instagram/Facebook):</label>
+          <div class="body-box" id="modalDmBody">Loading direct message...</div>
+        </div>
+        <div class="action-bar-row" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <button class="soft-pill-btn" id="copyDmBtn">Copy DM Message</button>
+          <button class="soft-pill-btn" id="modalOpenIgBtn" style="background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color:white; border:none; cursor:pointer;">📸 Open Instagram</button>
+          <button class="soft-pill-btn" id="modalOpenFbBtn" style="background:#1877F2; color:white; border:none; cursor:pointer;">👥 Open Facebook</button>
+          <span style="font-size: 11px; color: var(--text-muted);">Copies pitch & opens profile inbox.</span>
+        </div>
+      </div>
+
+      <!-- Tab Content 4: Cold Call Script & Objection Handlers -->
+      <div class="tab-pane" id="paneCall">
+        <div class="pitch-field-group">
+          <label>30-Second Permission-Based Opening Hook:</label>
+          <div class="body-box highlight-box" id="modalCallOpening">Loading telephone script...</div>
+        </div>
+        <div class="pitch-field-group" style="margin-top: 12px;">
+          <label>Main Value Proposition:</label>
+          <div class="body-box" id="modalCallHook">Loading hook...</div>
+        </div>
+        <div class="pitch-field-group" style="margin-top: 14px;">
+          <label>⚡ Interactive Objection Handlers (Click to Copy):</label>
+          <div class="objection-cards-grid">
+            <div class="objection-card">
+              <span class="objection-title">"We already have someone handling this"</span>
+              <p class="objection-text" id="modalObjAlreadyHave">Loading...</p>
+            </div>
+            <div class="objection-card">
+              <span class="objection-title">"Can you just send me an email?"</span>
+              <p class="objection-text" id="modalObjSendEmail">Loading...</p>
+            </div>
+            <div class="objection-card">
+              <span class="objection-title">"We're not interested right now"</span>
+              <p class="objection-text" id="modalObjNotInterested">Loading...</p>
+            </div>
+          </div>
+        </div>
+        <div class="action-bar-row">
+          <button class="soft-pill-btn" id="copyCallScriptBtn">Copy Full Call Script</button>
+        </div>
+      </div>
+
+      <!-- Tab Content 5: 60-Second Loom Video Blueprint -->
+      <div class="tab-pane" id="paneLoom">
+        <div class="pitch-field-group">
+          <label>60-Second Personalized Loom Video Script (Highest Booking Rate):</label>
+          <div class="loom-timeline-container" id="modalLoomTimeline">
+            <!-- Populated dynamically with 4 structured timeline steps -->
+          </div>
+        </div>
+        <div class="action-bar-row">
+          <button class="soft-pill-btn" id="copyLoomScriptBtn">Copy Video Script</button>
+          <span style="font-size: 11px; color: var(--text-muted);">Record a quick 60s Loom showing their Google listing & missing funnel.</span>
+        </div>
+      </div>
+
+      <!-- Tab Content 6: 100% Accuracy Audit Report -->
+      <div class="tab-pane" id="paneAudit">
+        <div class="audit-dashboard-grid">
+          <div class="audit-kpi-card">
+            <span class="audit-kpi-lbl">HUNTER OPPORTUNITY SCORE</span>
+            <div class="audit-score-gauge" id="modalAuditScore">96%</div>
+            <span class="audit-kpi-sub" id="modalAuditGrade">High-Ticket Opportunity</span>
+          </div>
+
+          <div class="audit-kpi-card">
+            <span class="audit-kpi-lbl">EMAIL DELIVERABILITY (MX)</span>
+            <div class="audit-val-status verified" id="modalAuditMx">Verified Active (0% Bounce)</div>
+            <span class="audit-kpi-sub" id="modalAuditMxSub">Microsoft 365 / Google Workspace</span>
+          </div>
+
+          <div class="audit-kpi-card">
+            <span class="audit-kpi-lbl">LOAD SPEED (TTFB)</span>
+            <div class="audit-val-status" id="modalAuditSpeed">820ms</div>
+            <span class="audit-kpi-sub" id="modalAuditSsl">HTTPS Certificate Active</span>
+          </div>
+
+          <div class="audit-kpi-card">
+            <span class="audit-kpi-lbl">DETECTED TECH STACK</span>
+            <div class="audit-tech-pills" id="modalAuditTech">
+              <span class="tech-tag">WordPress</span>
+              <span class="tech-tag">Elementor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pitch-field-group" style="margin-top: 14px;">
+          <label>Key Technical Bottleneck / Pitch Angle:</label>
+          <div class="body-box" id="modalAuditBottleneck">Loading bottleneck...</div>
+        </div>
+
+        <div class="action-bar-row">
+          <button class="coral-action-btn" id="modalReauditBtn">
+            <span>⚡ Run Live Real-Time Audit Now</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="soft-pill-btn" id="markPitchedBtn">Mark as Pitched</button>
+        <button class="soft-pill-btn" onclick="document.getElementById('pitchModal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGINE SETTINGS MODAL (AI Model & SMTP Config) -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card settings-modal">
+      <div class="modal-header">
+        <div class="modal-badge-group">
+          <div class="brand-badge mini">⚙️</div>
+          <div>
+            <h3>Engine Setup & AI Intelligence</h3>
+            <span class="modal-sub">Configure Flagship AI Models (Gemini 2.5 / GPT-4o) & Outreach Delivery</span>
+          </div>
+        </div>
+        <button class="close-modal-btn" id="closeSettingsModal">✕</button>
+      </div>
+
+      <!-- Settings Navigation Tabs -->
+      <div class="modal-tabs" style="margin-bottom: 16px;">
+        <button class="modal-tab active" id="tabSettingsAi">🤖 Flagship AI Models</button>
+        <button class="modal-tab" id="tabSettingsSmtp">📧 Automated Email (SMTP)</button>
+      </div>
+
+      <!-- Tab 1: AI Model Configuration -->
+      <div class="settings-tab-pane active" id="paneSettingsAi">
+        <div class="ai-info-box">
+          <div style="font-weight: 700; color: #0F172A; margin-bottom: 4px; display:flex; align-items:center; gap:6px;">
+            <span>💡 How Client Hunter Uses AI</span>
+            <span class="ai-flagship-tag">Top-Tier LLMs</span>
+          </div>
+          <p style="margin: 0; font-size: 11.5px; line-height: 1.45; color: #475569;">
+            <strong>Real-World Discovery</strong> uses live OpenStreetMap & registry OSINT to guarantee 100% genuine businesses, real phones, and verified websites without hallucinations. <strong>Auditing & Pitch Copywriting</strong> connects directly to your chosen flagship AI model (Gemini 2.5 Flash / Pro, GPT-4o) for bespoke, high-converting outreach dossiers.
+          </p>
+        </div>
+
+        <div class="hunt-form" style="margin-top: 14px;">
+          <div class="form-group">
+            <label for="settingAiProvider">AI Intelligence Provider:</label>
+            <select id="settingAiProvider">
+              <option value="gemini" selected>Google Gemini (Recommended · Gemini 2.5 Flash / Pro)</option>
+              <option value="openai">OpenAI (GPT-4o / GPT-4o-mini)</option>
+              <option value="custom">DeepSeek / Custom (OpenAI-Compatible Endpoint)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="settingAiModel">AI Model Selection:</label>
+            <select id="settingAiModel">
+              <option value="gemini-3.5-flash-lite" selected>Gemini 3.5 Flash Lite — Ultra Fast &amp; 100% Reliable (Recommended)</option>
+              <option value="gemini-3.8-flash">Gemini 3.8 Flash — Absolute Latest 2026 Flagship</option>
+              <option value="gemini-3.7-flash">Gemini 3.7 Flash — High-Speed Stable Flagship</option>
+              <option value="gemini-3.5-flash">Gemini 3.5 Flash — Balanced High Performance</option>
+              <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro — Maximum Reasoning Depth</option>
+              <option value="gpt-4o">GPT-4o — OpenAI Multimodal Flagship</option>
+              <option value="gpt-4o-mini">GPT-4o-mini — High-Speed Lightweight Model</option>
+              <option value="deepseek-chat">DeepSeek V3 (deepseek-chat)</option>
+              <option value="custom">Custom Model Name...</option>
+            </select>
+            <input type="text" id="settingCustomModel" placeholder="e.g. meta-llama/llama-3.3-70b" style="display:none; margin-top: 6px;">
+          </div>
+
+          <div class="form-group">
+            <label for="settingAiKey">AI API Key (Gemini or OpenAI):</label>
+            <div style="display:flex; gap: 8px;">
+              <input type="password" id="settingAiKey" placeholder="Enter Gemini (AQ... / AIzaSy...) or OpenAI (sk-...) API key">
+              <button type="button" class="soft-pill-btn" id="toggleAiKeyVisibility" title="Show / Hide API Key" style="padding: 0 12px;">👁️</button>
+            </div>
+            <div id="aiKeyStatusHelp" style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+              *Stored securely in local config.json. Built-in smart synthesis acts as automatic fallback if empty.
+            </div>
+          </div>
+
+          <div class="form-group" id="customBaseUrlGroup" style="display:none;">
+            <label for="settingAiBaseUrl">Custom API Base URL (Optional):</label>
+            <input type="text" id="settingAiBaseUrl" placeholder="https://api.deepseek.com/v1">
+          </div>
+
+          <div style="display:flex; align-items:center; gap: 10px; margin-top: 10px;">
+            <button type="button" class="soft-pill-btn" id="testAiConnectionBtn" style="font-weight:700;">
+              <span>⚡ Test Connection</span>
+            </button>
+            <span id="aiTestFeedback" class="test-feedback-lbl"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: SMTP Email Configuration -->
+      <div class="settings-tab-pane" id="paneSettingsSmtp" style="display:none;">
+        <div class="hunt-form">
+          <div class="form-group">
+            <label for="smtpUser">Sender Email (e.g. Gmail Address):</label>
+            <input type="email" id="smtpUser" placeholder="youremail@gmail.com">
+          </div>
+
+          <div class="form-group">
+            <label for="smtpPass">Gmail App Password (or SMTP Password):</label>
+            <input type="password" id="smtpPass" placeholder="16-character App Password">
+            <small style="color: var(--text-muted); font-size: 10px; margin-top: 4px; display: block;">
+              *Use a Google "App Password" (from your Google Account Security settings).
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="senderName">Sender Name:</label>
+            <input type="text" id="senderName" value="Kanon" placeholder="Your Name or Agency Name">
+          </div>
+
+          <div class="form-group">
+            <label for="smtpHost">SMTP Server & Port:</label>
+            <div style="display:flex; gap: 8px;">
+              <input type="text" id="smtpHost" value="smtp.gmail.com" style="flex:2;">
+              <input type="number" id="smtpPort" value="587" style="flex:1;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" style="margin-top: 18px;">
+        <button class="coral-action-btn full-width" id="saveSettingsBtn">
+          <span>💾 Save Engine Configuration</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL-SCREEN PROFESSIONAL MASTER DATABASE WORKSPACE -->
+  <div class="pro-sheet-workspace" id="masterSheetModal">
+    <!-- Top Command & Metric Bar -->
+    <header class="pro-sheet-header">
+      <div class="header-left">
+        <button class="sheet-back-btn" id="closeMasterSheetBtn" title="Back to Dashboard (Press Esc)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Dashboard</span>
+          <kbd>ESC</kbd>
+        </button>
+        <div class="sheet-divider"></div>
+        <div class="sheet-brand-heading">
+          <h2>Master Database</h2>
+          <span class="sheet-live-indicator"><span class="pulse-dot"></span> Live Sync</span>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="sheet-metrics-strip" id="sheetMetricsStrip">
+        <div class="metric-pill">
+          <span class="metric-lbl">Total Leads</span>
+          <span class="metric-val" id="metricTotalLeads">0</span>
+        </div>
+        <div class="metric-pill alert-pill">
+          <span class="metric-lbl">No Website</span>
+          <span class="metric-val" id="metricNoWebLeads">0</span>
+        </div>
+        <div class="metric-pill info-pill">
+          <span class="metric-lbl">Pitched</span>
+          <span class="metric-val" id="metricPitchedLeads">0</span>
+        </div>
+        <div class="metric-pill success-pill">
+          <span class="metric-lbl">Pipeline Value</span>
+          <span class="metric-val" id="metricPipelineVal">$0</span>
+        </div>
+      </div>
+
+      <!-- Actions & Tools -->
+      <div class="header-right">
+        <div class="sheet-search-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="sheetSearchInput" placeholder="Quick search... (Press /)">
+          <kbd class="search-kbd">/</kbd>
+        </div>
+
+        <button class="sheet-tool-btn" id="sheetDensityToggle" title="Toggle Compact / Relaxed Row Density">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span id="densityLabel">Compact</span>
+        </button>
+
+        <button class="sheet-action-btn secondary" id="copySheetTsvBtn" title="Copy TSV buffer for Google Sheets or Excel (Ctrl+V ready)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>Copy TSV</span>
+        </button>
+
+        <button class="sheet-action-btn primary" id="downloadSheetCsvBtn" title="Export Full Database to CSV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export CSV</span>
+        </button>
+
+        <button class="sheet-action-btn" id="clearAllLeadsSheetBtn" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #EF4444;" title="Purge all leads and reset to clean database">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span>Clear All</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sub-Toolbar Filters -->
+    <div class="pro-sheet-subbar">
+      <div class="subbar-left">
+        <!-- Segmented View Tabs -->
+        <div class="sheet-tabs" id="sheetTabs">
+          <button class="sheet-tab active" data-filter="all">All <span class="tab-count" id="tabCountAll">0</span></button>
+          <button class="sheet-tab" data-filter="no_website">No Website <span class="tab-count warn" id="tabCountNoWeb">0</span></button>
+          <button class="sheet-tab" data-filter="has_website">Has Website <span class="tab-count" id="tabCountHasWeb">0</span></button>
+          <button class="sheet-tab" data-filter="pitched">Pitched <span class="tab-count info" id="tabCountPitched">0</span></button>
+          <button class="sheet-tab" data-filter="booked">Booked / Closed <span class="tab-count success" id="tabCountBooked">0</span></button>
+        </div>
+
+        <div class="sheet-divider-sub"></div>
+
+        <!-- Dropdown Filters -->
+        <div class="dropdown-filter-wrap">
+          <select id="sheetNicheSelect" class="sheet-select-filter">
+            <option value="">All Categories (All)</option>
+          </select>
+          <select id="sheetCitySelect" class="sheet-select-filter">
+            <option value="">All Markets (All)</option>
+          </select>
+          <button class="sheet-clear-filters-btn" id="sheetClearFiltersBtn" style="display:none;">Clear Filters</button>
+        </div>
+      </div>
+
+      <div class="subbar-right">
+        <span class="sheet-showing-count" id="sheetLeadCount">Showing 0 records</span>
+      </div>
+    </div>
+
+    <!-- Spreadsheet Data Table Container -->
+    <main class="pro-grid-viewport" id="proGridViewport">
+      <table class="pro-table" id="proTableMain">
+        <thead>
+          <tr>
+            <th class="th-check"><input type="checkbox" id="sheetMasterCheck" title="Select All Rows"></th>
+            <th class="th-num">#</th>
+            <th class="th-company">Company & Niche</th>
+            <th class="th-loc">Location</th>
+            <th class="th-contact">Direct Contact</th>
+            <th class="th-web">Website Status</th>
+            <th class="th-rep">Reputation</th>
+            <th class="th-pain">Key Bottleneck / Pain Point</th>
+            <th class="th-offer">Recommended Solution</th>
+            <th class="th-social">Social</th>
+            <th class="th-status">Pipeline Stage</th>
+            <th class="th-action">Quick Action</th>
+          </tr>
+        </thead>
+        <tbody id="sheetTableBody">
+          <!-- Populated dynamically by app.js -->
+        </tbody>
+      </table>
+    </main>
+
+    <!-- Floating Batch Selection Dock (Shows when rows are selected) -->
+    <div class="sheet-batch-dock" id="sheetBatchDock" style="display:none;">
+      <div class="batch-dock-inner">
+        <span class="batch-count-label" id="batchCountLabel">0 leads selected</span>
+        <div class="batch-actions">
+          <button class="batch-btn" id="batchCopyBtn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy Selected (TSV)</span>
+          </button>
+          <button class="batch-btn" id="batchMarkPitchedBtn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Mark as Pitched</span>
+          </button>
+          <button class="batch-btn danger" id="batchDeselectBtn">✕ Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide-Over Lead Detail Inspector Drawer -->
+    <div class="sheet-drawer-backdrop" id="sheetDrawerBackdrop"></div>
+    <aside class="sheet-detail-drawer" id="sheetDetailDrawer">
+      <!-- Drawer Top Header -->
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <div class="drawer-avatar" id="drawerAvatar">--</div>
+          <div class="drawer-header-meta">
+            <div class="drawer-meta-tags">
+              <span class="drawer-badge" id="drawerCategory">--</span>
+              <span class="drawer-city" id="drawerLocation">--</span>
+              <span class="drawer-bd-time" id="drawerBdTimeTag">🇧🇩 Best: 8:00 PM – 12:00 AM BST</span>
+            </div>
+            <h3 id="drawerCompanyName">Select a lead to inspect</h3>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="closeDrawerBtn" title="Close Drawer (Esc)">
+          <span>ESC</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Quick Action Command Bar -->
+      <div class="drawer-quick-actions">
+        <button class="drawer-btn-wa" id="drawerWaBtn" title="Open personalized pitch in WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span>WhatsApp Chat</span>
+        </button>
+        <button class="drawer-btn-email" id="drawerEmailBtn" title="Send cold pitch email">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Send Email</span>
+        </button>
+        <button class="drawer-btn-call" id="drawerCallBtn" title="View Telephone Pitch & Objection Handlers">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Cold Call</span>
+        </button>
+        <button class="drawer-btn-loom" id="drawerLoomBtn" title="View 60s Loom Video Blueprint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+          <span>Loom Script</span>
+        </button>
+        <button class="drawer-btn-pitch" id="drawerPitchBtn" title="Inspect full AI copy scripts">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <span>AI Pitches</span>
+        </button>
+      </div>
+
+      <!-- Drawer Scrollable Body -->
+      <div class="drawer-body">
+        
+        <!-- Pipeline & Reputation Status Strip -->
+        <div class="drawer-strip">
+          <div class="drawer-strip-col">
+            <span class="drawer-prop-label">Pipeline Stage</span>
+            <div class="drawer-stage-wrapper">
+              <select class="drawer-status-select" id="drawerStatusSelect">
+                <option value="New">● New Lead</option>
+                <option value="Pitched">● Pitched</option>
+                <option value="Followed Up">● Followed Up</option>
+                <option value="Meeting Booked">● Meeting Booked</option>
+                <option value="Closed">● Deal Closed ($$$)</option>
+              </select>
+            </div>
+          </div>
+          <div class="drawer-strip-col right-align">
+            <span class="drawer-prop-label">Google Reputation</span>
+            <div class="drawer-rep-score" id="drawerReputation">--</div>
+          </div>
+        </div>
+
+        <!-- CRM Metadata Properties List -->
+        <div class="drawer-section">
+          <div class="drawer-section-heading">Lead Dossier & Channels</div>
+          <div class="drawer-props-list">
+            <div class="drawer-prop-row">
+              <span class="prop-key">Direct Phone</span>
+              <div class="prop-val">
+                <span class="phone-num" id="drawerPhone">--</span>
+                <button class="prop-copy-btn" id="drawerCopyPhoneBtn" title="Copy Phone">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="drawer-prop-row">
+              <span class="prop-key">Email Address</span>
+              <div class="prop-val">
+                <span class="email-text" id="drawerEmail">--</span>
+                <button class="prop-copy-btn" id="drawerCopyEmailBtn" title="Copy Email">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="drawer-prop-row">
+              <span class="prop-key">Website</span>
+              <div class="prop-val" id="drawerWebsiteWrap">
+                <span id="drawerWebsite" style="color:var(--text-muted); font-size:12px;">--</span>
+              </div>
+            </div>
+
+            <div class="drawer-prop-row">
+              <span class="prop-key">Social Profiles</span>
+              <div class="prop-val socials-val" id="drawerSocials">
+                <span style="color:#94A3B8; font-size:11px;">None</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Operational Audit (Sleek Clean Insight Callout) -->
+        <div class="drawer-section">
+          <div class="drawer-section-heading">
+            <span>AI Operational Audit</span>
+            <span class="audit-chip">High-Conversion Opportunity</span>
+          </div>
+          <div class="drawer-audit-box">
+            <div class="audit-accent-bar"></div>
+            <div class="audit-content">
+              <p class="drawer-pain-text" id="drawerPainPoint">
+                Select a lead to inspect opportunity and findings.
+              </p>
+              <div class="audit-impact-note">
+                <span class="impact-dot"></span>
+                <span><b>Opportunity:</b> Identify website and automation bottlenecks.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 100% Accuracy Verification & Live Technical Audit -->
+        <div class="drawer-section">
+          <div class="drawer-section-heading">
+            <span>🛡️ 100% Accuracy & Deliverability Check</span>
+            <span class="audit-chip verified" id="drawerAccuracyBadge">Verified 0% Bounce</span>
+          </div>
+          <div class="drawer-accuracy-grid">
+            <div class="acc-tile">
+              <span class="acc-lbl">EMAIL DELIVERABILITY</span>
+              <span class="acc-val" id="drawerMxStatus">--</span>
+            </div>
+            <div class="acc-tile">
+              <span class="acc-lbl">LOAD SPEED (TTFB)</span>
+              <span class="acc-val" id="drawerSpeedStatus">--</span>
+            </div>
+            <div class="acc-tile">
+              <span class="acc-lbl">SECURITY SSL</span>
+              <span class="acc-val" id="drawerSslStatus">--</span>
+            </div>
+            <div class="acc-tile">
+              <span class="acc-lbl">TECH DETECTED</span>
+              <span class="acc-val" id="drawerTechStatus">--</span>
+            </div>
+          </div>
+          <button class="drawer-reaudit-btn" id="drawerReauditBtn">
+            <span>⚡ Re-Run Live Audit & MX Check</span>
+          </button>
+        </div>
+
+        <!-- Recommended High-Ticket Offer -->
+        <div class="drawer-section">
+          <div class="drawer-section-heading">
+            <span>Recommended Solution</span>
+            <span class="offer-val-chip" id="drawerDealValue">High-Value Opportunity</span>
+          </div>
+          <div class="drawer-solution-box">
+            <h4 id="drawerOffer">Speed-to-Lead Follow-up Automation</h4>
+            <ul class="solution-points">
+              <li>Instant 30-second automated SMS follow-up sequence</li>
+              <li>Direct calendar appointment booking embed</li>
+              <li>Missed-call automated text-back trigger</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Sleek Status Bar Footer -->
+    <footer class="pro-sheet-statusbar">
+      <div class="statusbar-left">
+        <span class="status-pulse-dot"></span>
+        <span id="sheetFooterStats">Showing 0 records · Database ready</span>
+      </div>
+      <div class="statusbar-center">
+        <span>Click any row to inspect lead dossier · Press <kbd>ESC</kbd> to return to dashboard · <kbd>/</kbd> to search</span>
+      </div>
+      <div class="statusbar-right">
+        <span>Client Hunter Enterprise Grid</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Live Toast Notification -->
+  <div class="toast" id="toastNotification">
+    <span class="toast-icon">✓</span>
+    <span class="toast-msg" id="toastMsg">Action completed</span>
+  </div>
+
+  <script src="/static/app.js?v=3.0"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "client-hunter-os",
+  "version": "2.0.0",
+  "description": "Client Hunter OS - Lead Generation, AI Auditing, and Outreach Command Center",
+  "scripts": {
+    "dev": "python server.py",
+    "start": "python server.py"
+  },
+  "keywords": [
+    "lead-generation",
+    "fastapi",
+    "outreach",
+    "client-hunting"
+  ],
+  "author": "",
+  "license": "ISC"
+}

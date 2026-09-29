@@ -1,0 +1,21 @@
+{
+  "niche_index": 2,
+  "city_index": 2,
+  "total_runs": 2,
+  "total_leads_hunted": 20,
+  "last_run": "2026-09-30 00:07:35",
+  "history": [
+    {
+      "time": "2026-09-30 00:01:40",
+      "niche": "Roofing Contractors",
+      "city": "Dallas, TX",
+      "count": 10
+    },
+    {
+      "time": "2026-09-30 00:07:35",
+      "niche": "Solar Energy Installers",
+      "city": "Austin, TX",
+      "count": 10
+    }
+  ]
+}
